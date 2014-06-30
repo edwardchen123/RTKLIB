@@ -151,7 +151,7 @@ static int decode_lexraw(raw_t *raw)
             
             raw->obs.data[n].P[3]=pr;
             raw->obs.data[n].L[3]=adr;
-            raw->obs.data[n].D[3]=dop;
+            raw->obs.data[n].D[3]=(float)dop;
             raw->obs.data[n].SNR[3]=(unsigned char)(cn0*0.04+0.5);
             raw->obs.data[n].LLI[3]=lli;
             raw->obs.data[n].code[3]=

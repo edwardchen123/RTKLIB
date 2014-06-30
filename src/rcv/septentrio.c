@@ -223,11 +223,10 @@ static int checkpri(const char *opt, int sys, int code, int freq)
 */
 static int decode_measepoch(raw_t *raw){
     gtime_t time;
-    double tow,tt,psr, adr, tadj=0.0,toff=0.0,tn,CurrentTime, dopplerType1;
+    double tow,tt=0.0,psr, adr, tadj=0.0,toff=0.0, dopplerType1;
     double SNR_DBHZ, SNR2_DBHZ, freqType1, freqType2, alpha;
-    int i,ii,j,prn,sat,n=0,nsat,week, lli, code, freq, pos, index, dTowInt;
+    int i,ii,j,prn,sat,n=0,nsat,week, code;
     unsigned char *p=(raw->buff)+8;                   /* jump to TOW location */
-    char *q,tstr[32];
     int SB1length,SB2length,CommonFlags,ReservedBits1,ReservedBits2;
     unsigned char signType1, antID, signType2, antID2;
     unsigned int codeLSB, SB2Num, SB1Num, BlockLength, sys, h;
@@ -548,41 +547,41 @@ static int getSigFreq(int _signType){
     switch (_signType)
     {
     case 0:                                                        /* GPSL1CA */
-        return FREQ1;
+        return (int)FREQ1;
     case 1:                                                        /* GPSL1PY */
-        return FREQ1;
+        return (int)FREQ1;
     case 2:                                                        /* GPSL2PY */
-        return FREQ2;
+        return (int)FREQ2;
     case 3:                                                        /* GPSL2C  */
-        return FREQ2;
+        return (int)FREQ2;
     case 4:                                                        /* GPSL5   */
-        return FREQ5;
+        return (int)FREQ5;
     case 8:                                                        /* GLOL1CA */
-        return FREQ1;
+        return (int)FREQ1;
     case 9:                                                        /* GLOL1P  */
-        return FREQ1;
+        return (int)FREQ1;
     case 10:                                                       /* GLOL2P  */
-        return FREQ2;
+        return (int)FREQ2;
     case 11:                                                       /* GLOL2CA */
-        return FREQ2;
+        return (int)FREQ2;
     case 16:                                                       /* GALL1A  */
-        return FREQ1;
+        return (int)FREQ1;
     case 17:                                                       /* GALL1BC */
-        return FREQ1;
+        return (int)FREQ1;
     case 18:                                                       /* GALE6A  */
-        return FREQ6;
+        return (int)FREQ6;
     case 19:                                                       /* GALE6BC */
-        return FREQ6;
+        return (int)FREQ6;
     case 20:                                                       /* GALE5a  */
-        return FREQ5;
+        return (int)FREQ5;
     case 21:                                                       /* GALE5b  */
-        return FREQ5;
+        return (int)FREQ5;
     case 22:                                                       /* GALE5   */
-        return FREQ5;
+        return (int)FREQ5;
     case 24:                                                       /* GEOL1   */
-        return FREQ1;
+        return (int)FREQ1;
     }
-    return FREQ1;
+    return (int)FREQ1;
 }
 
 /* adjust weekly rollover of gps time ----------------------------------------*/
@@ -774,7 +773,7 @@ static int decode_gpsrawcanav(raw_t *raw){
 
     unsigned char *p=(raw->buff)+6;
     eph_t eph={0};
-    int prn,sat;
+    int sat;
     unsigned char _buf[30]={0};
     unsigned char *pt=_buf;
     int i=0,ii=0,id,resp;
