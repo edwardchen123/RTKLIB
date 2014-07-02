@@ -387,16 +387,17 @@ extern "C" {
 #define STRFMT_NVS   10                 /* stream format: NVS NVC08C */
 #define STRFMT_BINEX 11                 /* stream format: BINEX */
 #define STRFMT_LEXR  12                 /* stream format: Furuno LPY-10000 */
-#define STRFMT_SIRF  13                 /* stream format: SiRF    (reserved) */
-#define STRFMT_RINEX 14                 /* stream format: RINEX */
-#define STRFMT_SP3   15                 /* stream format: SP3 */
-#define STRFMT_RNXCLK 16                /* stream format: RINEX CLK */
-#define STRFMT_SBAS  17                 /* stream format: SBAS messages */
-#define STRFMT_NMEA  18                 /* stream format: NMEA 0183 */
+#define STRFMT_LEXBIN 13                /* stream format: LEX raw binary */
+#define STRFMT_SIRF  14                 /* stream format: SiRF    (reserved) */
+#define STRFMT_RINEX 15                 /* stream format: RINEX */
+#define STRFMT_SP3   16                 /* stream format: SP3 */
+#define STRFMT_RNXCLK 17                /* stream format: RINEX CLK */
+#define STRFMT_SBAS  18                 /* stream format: SBAS messages */
+#define STRFMT_NMEA  19                 /* stream format: NMEA 0183 */
 #ifndef EXTLEX
 #define MAXRCVFMT    11                 /* max number of receiver format */
 #else
-#define MAXRCVFMT    12
+#define MAXRCVFMT    13
 #endif
 
 #define STR_MODE_R  0x1                 /* stream mode: read */
@@ -1487,28 +1488,30 @@ extern void free_raw  (raw_t *raw);
 extern int input_raw  (raw_t *raw, int format, unsigned char data);
 extern int input_rawf (raw_t *raw, int format, FILE *fp);
 
-extern int input_oem4  (raw_t *raw, unsigned char data);
-extern int input_oem3  (raw_t *raw, unsigned char data);
-extern int input_ubx   (raw_t *raw, unsigned char data);
-extern int input_ss2   (raw_t *raw, unsigned char data);
-extern int input_cres  (raw_t *raw, unsigned char data);
-extern int input_stq   (raw_t *raw, unsigned char data);
-extern int input_gw10  (raw_t *raw, unsigned char data);
-extern int input_javad (raw_t *raw, unsigned char data);
-extern int input_nvs   (raw_t *raw, unsigned char data);
-extern int input_bnx   (raw_t *raw, unsigned char data);
-extern int input_lexr  (raw_t *raw, unsigned char data);
-extern int input_oem4f (raw_t *raw, FILE *fp);
-extern int input_oem3f (raw_t *raw, FILE *fp);
-extern int input_ubxf  (raw_t *raw, FILE *fp);
-extern int input_ss2f  (raw_t *raw, FILE *fp);
-extern int input_cresf (raw_t *raw, FILE *fp);
-extern int input_stqf  (raw_t *raw, FILE *fp);
-extern int input_gw10f (raw_t *raw, FILE *fp);
-extern int input_javadf(raw_t *raw, FILE *fp);
-extern int input_nvsf  (raw_t *raw, FILE *fp);
-extern int input_bnxf  (raw_t *raw, FILE *fp);
-extern int input_lexrf (raw_t *raw, FILE *fp);
+extern int input_oem4   (raw_t *raw, unsigned char data);
+extern int input_oem3   (raw_t *raw, unsigned char data);
+extern int input_ubx    (raw_t *raw, unsigned char data);
+extern int input_ss2    (raw_t *raw, unsigned char data);
+extern int input_cres   (raw_t *raw, unsigned char data);
+extern int input_stq    (raw_t *raw, unsigned char data);
+extern int input_gw10   (raw_t *raw, unsigned char data);
+extern int input_javad  (raw_t *raw, unsigned char data);
+extern int input_nvs    (raw_t *raw, unsigned char data);
+extern int input_bnx    (raw_t *raw, unsigned char data);
+extern int input_lexr   (raw_t *raw, unsigned char data);
+extern int input_lexbin (raw_t *raw, unsigned char data);
+extern int input_oem4f  (raw_t *raw, FILE *fp);
+extern int input_oem3f  (raw_t *raw, FILE *fp);
+extern int input_ubxf   (raw_t *raw, FILE *fp);
+extern int input_ss2f   (raw_t *raw, FILE *fp);
+extern int input_cresf  (raw_t *raw, FILE *fp);
+extern int input_stqf   (raw_t *raw, FILE *fp);
+extern int input_gw10f  (raw_t *raw, FILE *fp);
+extern int input_javadf (raw_t *raw, FILE *fp);
+extern int input_nvsf   (raw_t *raw, FILE *fp);
+extern int input_bnxf   (raw_t *raw, FILE *fp);
+extern int input_lexrf  (raw_t *raw, FILE *fp);
+extern int input_lexbinf(raw_t *raw, FILE *fp);
 
 extern int gen_ubx (const char *msg, unsigned char *buff);
 extern int gen_stq (const char *msg, unsigned char *buff);

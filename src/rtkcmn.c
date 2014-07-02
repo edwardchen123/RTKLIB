@@ -195,12 +195,13 @@ const char *formatstrs[]={      /* stream format strings */
     "NVS BINR",                 /* 10 */
     "BINEX",                    /* 11 */
     "LEX Receiver",             /* 12 */
-    "SiRF",                     /* 13 */
-    "RINEX",                    /* 14 */
-    "SP3",                      /* 15 */
-    "RINEX CLK",                /* 16 */
-    "SBAS",                     /* 17 */
-    "NMEA 0183",                /* 18 */
+	"LEX Binary",               /* 13 */
+	"SiRF",                     /* 14 */
+	"RINEX",                    /* 15 */
+	"SP3",                      /* 16 */
+	"RINEX CLK",                /* 17 */
+	"SBAS",                     /* 18 */
+    "NMEA 0183",                /* 19 */
     NULL
 };
 static char *obscodes[]={       /* observation code strings */
@@ -3706,5 +3707,7 @@ extern void settime(gtime_t time) {}
 extern int input_lexr(raw_t *raw, unsigned char data) {return 0;}
 extern int input_lexrf(raw_t *raw, FILE *fp) {return 0;}
 extern int gen_lexr(const char *msg, unsigned char *buff) {return 0;}
+extern int input_lexbin(raw_t *raw, unsigned char data) {return 0;}
+extern int input_lexbinf(raw_t *raw, FILE *fp) {return 0;}
 #endif /* EXTLEX */
 
